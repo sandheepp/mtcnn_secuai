@@ -1,6 +1,7 @@
 from mtcnn.mtcnn import MTCNN
 import cv2
 import freenect
+import time
 
 detector = MTCNN()
 image = cv2.cvtColor(cv2.imread("ivan.jpg"), cv2.COLOR_BGR2RGB)
@@ -20,7 +21,9 @@ cv2.rectangle(image,
 while True: 
     #Capture frame-by-frame
     # __, frame = cap.read()
+    start = time.time()
     
+
     # (depth, _) = freenect.sync_get_depth()
     (frame, _) = freenect.sync_get_video()
 
@@ -46,6 +49,7 @@ while True:
     
     #display resulting frame
     cv2.imshow('frame',frame)
+    print(time.time()-start)
     if cv2.waitKey(1) &0xFF == ord('q'):
         break#When everything's done, release capture
 # cap.release()
