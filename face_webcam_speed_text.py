@@ -3,22 +3,15 @@ import cv2
 import time
 # import freenect
 
+
+# Network initialisation
 detector = MTCNN()
-image = cv2.cvtColor(cv2.imread("ivan.jpg"), cv2.COLOR_BGR2RGB)
-result = detector.detect_faces(image)
-bounding_box = result[0]['box']
-keypoints = result[0]['keypoints']
 
-cv2.rectangle(image,
-              (bounding_box[0], bounding_box[1]),
-              (bounding_box[0]+bounding_box[2], bounding_box[1] + bounding_box[3]),
-              (0,155,255),
-              2)
 
-# For multiple faces
+# Camera Linked
 cap = cv2.VideoCapture(0)
 
-previous =0
+previous = 0
 
 while True: 
     #Capture frame-by-frame
@@ -53,7 +46,7 @@ while True:
             previous = bounding_box[0]
             
             # cv2.putText(image, "speed = {:.2f}".format(speed), (50, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2, lineType=cv2.LINE_AA)
-            cv2.putText(frame, "abc", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,155,255), 2, lineType=cv2.LINE_AA)
+            cv2.putText(frame, str(speed), (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,155,255), 2, lineType=cv2.LINE_AA)
 
     
     # print(previous)
@@ -61,5 +54,6 @@ while True:
     cv2.imshow('frame',frame)
     if cv2.waitKey(1) &0xFF == ord('q'):
         break#When everything's done, release capture
+    
 cap.release()
 cv2.destroyAllWindows()

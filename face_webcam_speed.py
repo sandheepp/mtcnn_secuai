@@ -16,7 +16,7 @@ cv2.rectangle(image,
               2)
 
 # For multiple faces
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(2)
 
 previous =0
 

@@ -36,19 +36,9 @@ while True:
     #Capture frame-by-frame
     __, image = cap.read()
     start = time.time()
-    # print("start :" , start)
 
-    # (depth, _) = freenect.sync_get_depth()
-    # (image, _) = freenect.sync_get_video()
-    image = imutils.resize(image, width=min(400, image.shape[1]))
-	# orig = image.copy()
-
-	# detect people in the image
     (rects, weights) = hog.detectMultiScale(image, winStride=(4, 4), padding=(8, 8), scale=1.05)
     
-    # draw the original bounding boxes
-    for (x, y, w, h) in rects:
-        cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)
     
     #  apply non-maxima suppression to the bounding boxes using a
     # fairly large overlap threshold to try to maintain overlapping
@@ -59,8 +49,6 @@ while True:
 
     end = time.time()
     time_taken = end- start
-    
-
 
     # draw the final bounding boxes
     for (xA, yA, xB, yB) in pick:

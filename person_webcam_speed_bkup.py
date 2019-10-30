@@ -39,13 +39,12 @@ while True:
 
 
     # detect people in the image
-    #(rects, weights) = hog.detectMultiScale(image, winStride=(4, 4), padding=(8, 8), scale=1.05)
-    (rects, weights) = hog.detectMultiScale(image, scale = 1.2)
+    (rects, weights) = hog.detectMultiScale(image, winStride=(4, 4), padding=(8, 8), scale=1.05)
     
     # fairly large overlap threshold to try to maintain overlapping
     # boxes that are still people
     rects = np.array([[x, y, x + w, y + h] for (x, y, w, h) in rects])
-    pick = non_max_suppression(rects, probs=None, overlapThresh=0.0)
+    pick = non_max_suppression(rects, probs=None, overlapThresh=0.65)
 
 
     # draw the final bounding boxes
