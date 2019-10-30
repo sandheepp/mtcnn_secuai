@@ -44,10 +44,18 @@ while True:
             cv2.circle(frame,(keypoints['nose']), 2, (0,155,255), 2)
             cv2.circle(frame,(keypoints['mouth_left']), 2, (0,155,255), 2)
             cv2.circle(frame,(keypoints['mouth_right']), 2, (0,155,255), 2)
-    end = time.time()
-    time_taken = end- start
-    print("Speed (relative):",(bounding_box[0] - previous)/time_taken)
-    previous = bounding_box[0];
+            end = time.time()
+            while( (end- start)< 0.3):
+                end = time.time()
+            time_taken = end- start
+            speed = (bounding_box[0] - previous)/time_taken/100
+            print("Velocity of face movement:", abs(speed), "m/s")
+            previous = bounding_box[0]
+            
+            # cv2.putText(image, "speed = {:.2f}".format(speed), (50, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2, lineType=cv2.LINE_AA)
+            cv2.putText(frame, "abc", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,155,255), 2, lineType=cv2.LINE_AA)
+
+    
     # print(previous)
     #display resulting frame
     cv2.imshow('frame',frame)
