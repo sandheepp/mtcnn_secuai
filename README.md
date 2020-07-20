@@ -1,4 +1,4 @@
-# mtcnn_secuai
+# Mtcnn_Secuai
 
 
 mtcc.py : Basic face detection using mtcnn in webcam
