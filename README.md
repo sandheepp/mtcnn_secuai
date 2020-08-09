@@ -1,4 +1,5 @@
 # Mtcnn_Secuai
+The algorithm used for reducing physical dangers in ATM transaction
 
 ## mtcc.py :
 Basic face detection using mtcnn in webcam
