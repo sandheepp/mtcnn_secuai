@@ -1,4 +1,4 @@
-# Mtcnn_Secuai
+# MTCNN_Secuai
 The algorithm used for reducing physical dangers in ATM transaction
 
 ## mtcc.py :
