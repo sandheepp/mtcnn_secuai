@@ -1,5 +1,6 @@
 # MTCNN_Secuai
-The algorithm used for reducing physical dangers in ATM transaction
+The algorithm monitors ATMs in real-life scenario, thus reducing the man-power required to run the ATMs, and thereby reducing the cost to run individual ATMs.
+
 
 ## mtcc.py :
 Basic face detection using mtcnn in webcam
